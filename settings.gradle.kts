@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google()
@@ -13,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMMFirst"
-include(":KMMandroidApp")
-include(":Shared")
+rootProject.name = "MiltiplatformUIApp"
+include(":androidApp")
+include(":shared")
