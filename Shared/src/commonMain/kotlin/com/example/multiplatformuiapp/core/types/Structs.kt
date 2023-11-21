@@ -41,3 +41,8 @@ data class Color(
     val blue: Double,
     val alpha: Double
 )
+
+data class LayoutProperties(
+    var axis: Axis? = null,
+    var priority: Double = 1.0
+)
