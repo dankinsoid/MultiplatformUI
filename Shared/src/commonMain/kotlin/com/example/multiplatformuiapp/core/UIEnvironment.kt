@@ -7,11 +7,11 @@ class UIEnvironment {
     private val values: MutableMap<KClass<*>, Any> = mutableMapOf()
     private var parent: UIEnvironment? = null
 
-    operator fun <Key: UIEnvironmentKey, T: Any> get(key: KClass<Key>): T? {
+    operator fun <T, Key: UIEnvironmentKey<T>> get(key: KClass<Key>): T? {
         return values[key] as? T ?: parent?.get(key)
     }
 
-    operator fun <Key: UIEnvironmentKey, T: Any> set(key: KClass<Key>, value: T?) {
+    operator fun <T, Key: UIEnvironmentKey<T>> set(key: KClass<Key>, value: T?) {
         if (value == null) {
             values.remove(key)
         } else {
@@ -43,5 +43,5 @@ class UIEnvironment {
     }
 }
 
-interface UIEnvironmentKey {
+interface UIEnvironmentKey<T> {
 }

@@ -5,13 +5,11 @@ import com.example.multiplatformuiapp.core.KotlinUIComponent
 import com.example.multiplatformuiapp.core.KotlinUIProvider
 import com.example.multiplatformuiapp.core.UI
 import com.example.multiplatformuiapp.core.UIBuilder
-import com.example.multiplatformuiapp.core.UIEnvironment
-import com.example.multiplatformuiapp.core.UIEnvironmentKey
+import com.example.multiplatformuiapp.core.UIValues
+import com.example.multiplatformuiapp.core.UIValuesKey
 import com.example.multiplatformuiapp.core.types.KotlinUIProviderContext
 
-fun UIBuilder.text(text: String): UI = add(
-    subview = Text()
-) {
+fun UIBuilder.text(text: String): UI = component(Text()).values {
     it.text = text
 }
 
@@ -22,10 +20,10 @@ private class Text: BaseComponent {
     }
 }
 
-private class TextKey: UIEnvironmentKey
+private class TextKey: UIValuesKey<String>
 
-internal var UIEnvironment.text: String
-    get() = this[TextKey()] ?: ""
+var UIValues.text: String
+    get() = this[TextKey::class] ?: ""
     set(value) {
-        this[TextKey()] = value
+        this[TextKey::class] = value
     }

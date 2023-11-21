@@ -1,5 +1,7 @@
 package com.example.multiplatformuiapp.core
 
+import com.example.multiplatformuiapp.core.layouts.UILayout
+
 data class UIBuilder(
     private val block: UIBuilder.() -> Unit = {}
 ) {
@@ -16,9 +18,16 @@ data class UIBuilder(
         return result
     }
 
-    fun add(subview: BaseComponent, modify: ((UIEnvironment) -> Unit)? = null): UI {
-        val id = subview::class.qualifiedName ?: "${subview::class}"
-        val ui = UI(id, subview, modify ?: {})
+    fun layout(layout: UILayout, children: UIBuilder.() -> Unit, modify: ((UIEnvironment) -> Unit)? = null): UI {
+        return add(UIElement.Layout(layout, UIBuilder(children)), modify)
+    }
+
+    fun component(component: BaseComponent, modify: ((UIEnvironment) -> Unit)? = null): UI {
+        return  add(UIElement.Component(component), modify)
+    }
+
+    private fun add(element: UIElement, modify: ((UIEnvironment) -> Unit)? = null): UI {
+        val ui = UI(element.classID, element, modify ?: {})
         subviews.add(ui)
         return ui
     }

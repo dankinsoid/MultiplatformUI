@@ -4,7 +4,7 @@ import com.example.multiplatformuiapp.core.UIEnvironment
 import com.example.multiplatformuiapp.core.UIEnvironmentKey
 import com.example.multiplatformuiapp.core.types.Color
 
-private class BackgroundColorKey: UIEnvironmentKey
+private class BackgroundColorKey: UIEnvironmentKey<Color>
 
 var UIEnvironment.backgroundColor: Color
     get() = this[BackgroundColorKey::class] ?: Color(0.0, 0.0, 0.0, 0.0)
@@ -12,7 +12,7 @@ var UIEnvironment.backgroundColor: Color
         this[BackgroundColorKey::class] = value
     }
 
-private class ForegroundColorKey: UIEnvironmentKey
+private class ForegroundColorKey: UIEnvironmentKey<Color>
 
 var UIEnvironment.foregroundColor: Color
     get() = this[ForegroundColorKey::class] ?: Color(0.0, 0.0, 0.0, 1.0)
@@ -20,7 +20,7 @@ var UIEnvironment.foregroundColor: Color
         this[ForegroundColorKey::class] = value
     }
 
-private class IsEnabledKey: UIEnvironmentKey
+private class IsEnabledKey: UIEnvironmentKey<Boolean>
 
 var UIEnvironment.isEnabled: Boolean
     get() = this[IsEnabledKey::class] ?: true
@@ -28,7 +28,7 @@ var UIEnvironment.isEnabled: Boolean
         this[IsEnabledKey::class] = value
     }
 
-private class IsHighlightedKey: UIEnvironmentKey
+private class IsHighlightedKey: UIEnvironmentKey<Boolean>
 
 var UIEnvironment.isHighlighted: Boolean
     get() = this[IsHighlightedKey::class] ?: false

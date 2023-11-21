@@ -14,13 +14,13 @@ final class UIUpdater(
 
     fun update(block: () -> Unit) {
         isUpdating = true
-        UIEnvironment.with(ui.mapUIEnvironment) {
-            block()
-            val context = KotlinUIProviderContext(ui.id, component)
-            val newComponent = component ?: ui.base.createComponent(provider, context)
-            component = newComponent
-            ui.base.update(newComponent, context)
-        }
+//        UIEnvironment.with(ui.mapUIEnvironment) {
+//            block()
+//            val context = KotlinUIProviderContext(ui.id, component)
+//            val newComponent = component ?: ui.base.createComponent(provider, context)
+//            component = newComponent
+//            ui.base.update(newComponent, context)
+//        }
         isUpdating = false
     }
 
